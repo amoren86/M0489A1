@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Layouts</string>
+    <string name="layout_examples">Layout examples</string>
+    <string name="linear">Linear</string>
+    <string name="relative">Relative</string>
+    <string name="table">Table</string>
+    <string name="to">to</string>
+    <string name="subject">subject</string>
+    <string name="message">message</string>
+    <string name="send">send</string>
+    <string name="open_">Open…</string>
+    <string name="ctrl_o">Ctrl-O</string>
+    <string name="save_">Save…</string>
+    <string name="ctrl_s">Ctrl-S</string>
+    <string name="save_as_">Save As…</string>
+    <string name="ctrl_shift_s">Ctrl-Shift-S</string>
+    <string name="x">X</string>
+    <string name="import_">Import…</string>
+    <string name="export_">Export…</string>
+    <string name="ctrl_e">Ctrl-E</string>
+    <string name="quit">Quit</string>
+    <string name="reminder">reminder</string>
+    <string name="done">done</string>
+</resources>
