@@ -47,10 +47,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun secondAction() {
+
+        var etUserText = findViewById<EditText>(R.id.user).getText().toString()
         startActivity(
             Intent(this, SecondActivity::class.java).apply {
                 putExtra(
-                    "user", findViewById<EditText>(R.id.user).getText().toString()
+                    "user", etUserText
                 )
                 putExtra(PARAM_POINTS, 18)
             })

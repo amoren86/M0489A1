@@ -2,7 +2,6 @@ package com.example.activities
 
 import android.os.Bundle
 import android.widget.EditText
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
 class SecondActivity : AppCompatActivity() {
@@ -10,11 +9,16 @@ class SecondActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_second)
 
-        val bundle = intent.extras
-        val usuari = bundle?.getString("user")
-        val points = bundle?.getInt(MainActivity.PARAM_POINTS)
+        val user =  intent.getStringExtra("user")
+        val points =  intent.getIntExtra(MainActivity.PARAM_POINTS, 0)
 
-        findViewById<EditText>(R.id.userEditText).setText(usuari)
+        // ALTERNATIVE
+
+        // val bundle = intent.extras
+        // val user = bundle?.getString("user")
+        // val points = bundle?.getInt(MainActivity.PARAM_POINTS)
+
+        findViewById<EditText>(R.id.userEditText).setText(user)
         findViewById<EditText>(R.id.pointsEditText).setText(points.toString())
     }
 }
