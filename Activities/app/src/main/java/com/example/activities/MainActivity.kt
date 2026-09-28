@@ -1,10 +1,12 @@
 package com.example.activities
 
+import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.widget.Button
+import android.view.View
 import android.widget.EditText
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
@@ -12,25 +14,54 @@ class MainActivity : AppCompatActivity() {
         val PARAM_POINTS = "points"
     }
 
+    val enterNameLauncher =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            var answer = ""
+            if (result.resultCode == RESULT_OK) {
+                val data = result.data
+                val name = data?.extras?.getString("name")
+                answer = "The returned name is $name"
+            }
+            findViewById<EditText>(R.id.getNameEditText).setText(answer)
+        }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        findViewById<Button>(R.id.signButton).setOnClickListener {
-            signAction()
-        }
-
-        findViewById<Button>(R.id.sendButton).setOnClickListener {
-           sendAction()
-        }
-
-        findViewById<Button>(R.id.secondButton).setOnClickListener {
-            secondAction()
-        }
+//        findViewById<Button>(R.id.signButton).setOnClickListener {
+//            signAction()
+//        }
+//
+//        findViewById<Button>(R.id.sendButton).setOnClickListener {
+//           sendAction()
+//        }
+//
+//        findViewById<Button>(R.id.secondButton).setOnClickListener {
+//            secondAction()
+//        }
     }
+
+    fun onClickSignButton(view: View) {
+        signAction()
+    }
+
+    fun onClickSendButton(view: View) {
+        sendAction()
+    }
+
+    fun onClickSecondButton(view: View) {
+        secondAction()
+    }
+
+    fun onClickGetNameButton(view: View) {
+        getNameAction()
+    }
+
     private fun signAction() {
         startActivity(Intent(this, SignActivity::class.java))
     }
+
     private fun sendAction() {
         startActivity(
             Intent(Intent.ACTION_SEND).apply {
@@ -56,5 +87,11 @@ class MainActivity : AppCompatActivity() {
                 )
                 putExtra(PARAM_POINTS, 18)
             })
+    }
+
+    private fun getNameAction() {
+        enterNameLauncher.launch(
+            Intent(this, EnterNameActivity::class.java)
+        )
     }
 }

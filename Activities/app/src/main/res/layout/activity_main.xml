@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
     <ScrollView
-        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true">
@@ -39,6 +38,7 @@
 
                 <Button
                     android:id="@+id/signButton"
+                    android:onClick="onClickSignButton"
                     android:text="Sign" />
             </TableRow>
             <TableRow
@@ -63,6 +63,7 @@
 
                 <Button
                     android:id="@+id/sendButton"
+                    android:onClick="onClickSendButton"
                     android:text="Send" />
             </TableRow>
             <TableRow
@@ -90,6 +91,7 @@
 
                 <Button
                     android:id="@+id/secondButton"
+                    android:onClick="onClickSecondButton"
                     android:text="Second" />
             </TableRow>
             <TableRow
@@ -114,8 +116,21 @@
                     android:textSize="16sp" />
 
                 <Button
-                    android:id="@+id/btnItem3"
-                    android:text="OK" />
+                    android:id="@+id/getNameButton"
+                    android:onClick="onClickGetNameButton"
+                    android:text="Get Name" />
+            </TableRow>
+            <TableRow
+                android:gravity="center_vertical"
+                android:paddingBottom="8dp">
+
+                <EditText
+                    android:id="@+id/getNameEditText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="Name"
+                    android:inputType="text"
+                    android:ems="10"/>
             </TableRow>
         </TableLayout>
     </ScrollView>
