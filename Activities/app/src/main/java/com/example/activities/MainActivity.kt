@@ -17,32 +17,42 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         findViewById<Button>(R.id.signButton).setOnClickListener {
-            startActivity(Intent(this, SignActivity::class.java))
+            signAction()
         }
 
         findViewById<Button>(R.id.sendButton).setOnClickListener {
-            startActivity(
-                Intent(Intent.ACTION_SEND).apply {
-                    // The intent does not have a URI, so declare the "text/plain" MIME type
-                    type = "text/plain"
-                    putExtra(Intent.EXTRA_EMAIL, arrayOf("jan@example.com")) // recipients
-                    putExtra(Intent.EXTRA_SUBJECT, "Email subject")
-                    putExtra(Intent.EXTRA_TEXT, "Email message text")
-                    putExtra(
-                        Intent.EXTRA_STREAM, Uri.parse("content://path/to/email/attachment")
-                    )
-                    // You can also attach multiple items by passing an ArrayList of Uris
-                })
+           sendAction()
         }
 
         findViewById<Button>(R.id.secondButton).setOnClickListener {
-            startActivity(
-                Intent(this, SecondActivity::class.java).apply {
-                    putExtra(
-                        "user", findViewById<EditText>(R.id.user).getText().toString()
-                    )
-                    putExtra(PARAM_POINTS, 18)
-                })
+            secondAction()
         }
+    }
+    private fun signAction() {
+        startActivity(Intent(this, SignActivity::class.java))
+    }
+    private fun sendAction() {
+        startActivity(
+            Intent(Intent.ACTION_SEND).apply {
+                // The intent does not have a URI, so declare the "text/plain" MIME type
+                type = "text/plain"
+                putExtra(Intent.EXTRA_EMAIL, arrayOf("jan@example.com")) // recipients
+                putExtra(Intent.EXTRA_SUBJECT, "Email subject")
+                putExtra(Intent.EXTRA_TEXT, "Email message text")
+                putExtra(
+                    Intent.EXTRA_STREAM, Uri.parse("content://path/to/email/attachment")
+                )
+                // You can also attach multiple items by passing an ArrayList of Uris
+            })
+    }
+
+    private fun secondAction() {
+        startActivity(
+            Intent(this, SecondActivity::class.java).apply {
+                putExtra(
+                    "user", findViewById<EditText>(R.id.user).getText().toString()
+                )
+                putExtra(PARAM_POINTS, 18)
+            })
     }
 }
